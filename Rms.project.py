@@ -1,3 +1,4 @@
+
 from tkinter import *
 import random
 import time
@@ -49,13 +50,12 @@ def Ref():
     x = random.randint(1,100)
     randomRef = str(x)
     Reference.set(randomRef)
-
     CoF = float(Fries.get())
     CoLFries = float(Largefries.get())
     CoBurger = float(Burger.get())
     CoFilet = float(Filet.get())
     CoCheese_Burger = float(Cheese_Burger.get())
-    CoD = float(Drinks.get())
+    CoD = float(Drink.get())
 
     CostofFries = CoF * 26
     CostofLargeFries = CoLFries * 40
@@ -74,31 +74,32 @@ def Ref():
 
     Service = "Rs.", str('%.2f' % Ser_Charge)
 
-    OverAllCost = "Rs.",str('%.2f'% (PayTax + TotalCost + Ser_Charge))
+    OverAllCost = "Rs.",str('%.2f'% (PayTax + Totalcost + Ser_Charge))
     PaidTax = "Rs.",str('%.2f'% PayTax)
 
-    Service_Charge.set(Service)
+    Survice_Charge.set(Service)
     Cost.set(CostofMeal)
     Tax.set(PaidTax)
     SubTotal.set(CostofMeal)
-    Totalcost.set(OverAllCost)
+    Total.set(OverAllCost)
 
 def qexit():
     root.destroy()
 
 def reset():
-    Reference.set("")
-    Fries.set("")
-    Burger.set("")
-    Largefries.set("")
-    Cheese_Burger.set("")
-    Drink.set("")
-    Filet.set("")
-    Cost.set("")
-    Survice_Charge.set("")
-    Tax.set("")
-    SubTotal.set("")
-    Total.set("")
+    Reference.set(0.0)
+    Fries.set(0.0)
+    Burger.set(0.0)
+    Largefries.set(0.0)
+    Cheese_Burger.set(0.0)
+    Drink.set(0.0)
+    Filet.set(0.0)
+    Cost.set(0.0)
+    Survice_Charge.set(0.0)
+    Tax.set(0.0)
+    SubTotal.set(0.0)
+    Total.set(0.0)
+
 #=====================================================================================
 
 btn7=Button(f2,padx=16,pady=16,bd=4, fg="gray", font=('arial',20,'bold'),text="7",bg="black", command=lambda:btnclick(7))
@@ -143,14 +144,21 @@ Decimal.grid(row=5,column=2)
 Division=Button(f2,padx=16,pady=16,bd=4, fg="gray", font=('arial',20,'bold'),text="/",bg="black", command=lambda:btnclick("/"))
 Division.grid(row=5,column=3)
 
-
-#=======================================Restaurant info 1=======================================
 Reference = StringVar()
 Fries = StringVar()
 Largefries = StringVar()
 Burger = StringVar()
 Filet = StringVar()
 Cheese_Burger = StringVar()
+Drink = StringVar()
+Cost = StringVar()
+Survice_Charge = StringVar()
+Tax = StringVar()
+SubTotal = StringVar()
+Total = StringVar()
+reset()
+#=======================================Restaurant info 1=======================================
+
 
 lblReference = Label(f1,font=('Georgia',10,'bold'),text="Reference",bd=8,anchor="w")
 lblReference.grid(row=0,column=0)
@@ -183,13 +191,6 @@ txtCheese_Burger=Entry(f1,font=('Georgia',10,'bold'),textvariable=Cheese_Burger,
 txtCheese_Burger.grid(row=5,column=1)
 
 #=======================================Restaurant info 2===================================
-
-Drink = StringVar()
-Cost = StringVar()
-Survice_Charge = StringVar()
-Tax = StringVar()
-SubTotal = StringVar()
-Total = StringVar()
 
 lblDrink = Label(f1,font=('Georgia',10,'bold'),text="cold drink",bd=8,anchor="w")
 lblDrink.grid(row=0,column=3)
@@ -265,11 +266,11 @@ def price():
     lblinfo.grid(row=5, column=0)
     lblinfo = Label(roo, font=('aria', 15, 'bold'), text="30", fg="steel blue", anchor=W)
     lblinfo.grid(row=5, column=3)
-    lblinfo = Label(roo, font=('aria', 15, 'bold'), text="Drinks", fg="steel blue", anchor=W)
+lblinfo = Label(roo, font=('aria', 15, 'bold'), text="Dri
+nks", fg="steel blue", anchor=W)
     lblinfo.grid(row=6, column=0)
     lblinfo = Label(roo, font=('aria', 15, 'bold'), text="35", fg="steel blue", anchor=W)
     lblinfo.grid(row=6, column=3)
 btnprice=Button(f1,padx=16,pady=8, bd=10 ,fg="black",font=('ariel',16,'bold'),width=10,text="PRICE",bg="dark gray",command =price)
 btnprice.grid(row=7,column=0)
 root.mainloop()
-
